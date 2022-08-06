@@ -1,25 +1,38 @@
 # Kakapo
 
-## Features
+## Dashboard
 
 ```bash
-journal Today I went to the zoo!
-#   Append "Today I went to the zoo!" to todays journal
+dashboard fitness
+
+┌─ Steps by month ────────────┐
+│                ╷            │
+│   Month        │ Steps      │
+│ ╶──────────────┼──────────╴ │
+│   2022-08      │ 10321      │
+│   2022-07      │ 550139     │
+│   2022-06      │ 556459     │
+│   2022-05      │ 465849     │
+│   2022-04      │ 510721     │
+│   2022-03      │ 501969     │
+│                ╵            │
+└─────────────────────────────┘
 ```
 
-```bash
-journal
-#   List all of todays entries 
-```
+## Journal
 
 ```bash
-journal -d "last monday" Today I walked up a big hill
-#  Append "Today I walked up a big hill" to last mondays journal
-```
+# Append "Today I went to the zoo!" to todays journal
+$ journal Today I went to the zoo!
 
-```bash
-journal -d 2022-07-01
-#  List all entries from 1st July 2022
+# List all of todays entries 
+$ journal
+
+# Append "Today I walked up a big hill" to last mondays journal
+$ journal -d "last monday" Today I walked up a big hill
+
+# List all entries from 1st July 2022
+$ journal -d 2022-07-01
 ```
 
 ## Directory Structure
@@ -29,6 +42,11 @@ The journal entries are written to directories structured as below. The default 
 ```
 📁 ~/
   📁 kakapo/
+    📁 dashboards/
+      📔 fitness.yaml
+    📁 data/
+      📔 steps.csv
+      📔 caffeine.csv
     📁 journal/
       📁 2022/
         📁 06/

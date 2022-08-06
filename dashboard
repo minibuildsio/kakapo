@@ -1,0 +1,36 @@
+#!/bin/bash
+
+function usage() {
+  echo "Usage:"
+  echo "  dashboard [DASHBOARD NAME]"
+  echo ""
+  echo "[\$KAKAPO_HOME | ~]/kakapo/dashboards/[DASHBOARD NAME].yaml example:"
+  echo ""
+  echo "data:"
+  echo "  - steps"
+  echo "items:"
+  echo "  - id: steps_by_month"
+  echo "    title: Steps by month"
+  echo "    query: > "
+  echo "      select strftime('%Y-%m', date) as Month, sum(steps) as Steps"
+  echo "      from steps"
+  echo "      group by Month"
+  echo "      order by Month desc"
+  echo "      limit 6"
+  echo "layout:"
+  echo "  - row:"
+  echo "    - items:"
+  echo "      - steps_by_month"
+}
+
+while getopts h option
+do
+  case $option in
+    h | *)
+      usage
+      exit 0
+    ;;
+  esac
+done
+
+python $(dirname "${BASH_SOURCE}")/dashboard.py $@
